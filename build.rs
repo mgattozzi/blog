@@ -58,9 +58,8 @@ fn main() -> Result<(), Box<dyn Error>> {
             continue;
         }
 
-        // Just move the file if it's an svg
+        // Just skip the file if it's an svg as we'll inline it
         if let Some("svg") = post.path().extension().and_then(|s| s.to_str()) {
-            fs::copy(post.path(), out_dir.join(post.path().file_name().unwrap()))?;
             continue;
         }
 
@@ -121,6 +120,17 @@ fn main() -> Result<(), Box<dyn Error>> {
                         txt,
                         "Shell-Unix-Generic"
                     )),
+                    element!("img", |el| {
+                        if let Some(src) = el.get_attribute("src") {
+                            if src.contains("./") {
+                                let path = temp_dir.join(&src[2..]);
+                                let image = fs::read_to_string(&path)?;
+                                el.replace(&image, ContentType::Html);
+                            }
+                        }
+
+                        Ok(())
+                    }),
                     element!("code", |el| {
                         el.remove_attribute("class");
                         el.remove_and_keep_content();
