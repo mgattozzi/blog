@@ -1,9 +1,10 @@
-use fastly::http::StatusCode;
-use fastly::Error;
-use fastly::Request;
-use fastly::Response;
+use axum::http::StatusCode;
+use axum::response::Responsed;
+use axum::routing::get;
+use axum::Router;
 use phf::phf_map;
 use phf::Map;
+use std::net::SocketAddr;
 
 // Macros
 macro_rules! file {
@@ -36,13 +37,19 @@ static LOOKUP: Map<&'static str, &'static [u8]> = phf_map! {
         "/oxidizing-the-technical-interview" => OXIDIZING,
 };
 
-#[fastly::main]
-fn main(req: Request) -> Result<Response, Error> {
-    let path = req.get_path();
-    Ok(LOOKUP
-        .get(path)
-        .map(|body| make_200_res(body))
-        .unwrap_or_else(make_404_res))
+#[tokio::main]
+async fn main() {
+  let router = Router::new()
+    .route("/", get(home))
+    .route("/about", get())
+    .route("/contact", get())
+    .route("/the-edge", get())
+    .route("/weird-expressions-and-where-to-find-them", get())
+    .route("/orphan-rules", get())
+    .route("/rusts-runtime", get())
+    .route("/rust-wasm", get())
+    .route("/oxidizing-the-technical-interview", get())
+
 }
 
 fn make_200_res(body: &[u8]) -> Response {
