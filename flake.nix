@@ -21,13 +21,12 @@
       {
         devShells.default = mkShell {
           buildInputs = [
+            difftastic
+            less
+            git
             exa
             fd
-            llvmPackages_latest.bintools
-            llvmPackages_latest.lld
-            llvmPackages_latest.llvm
-            openssl
-            pkg-config
+            nodejs-19_x
             ripgrep
             (rust-bin.stable."1.67.1".default.override {
               extensions = [ "rust-src" "rust-analyzer" ];
@@ -35,7 +34,7 @@
             })
             cargo-watch
           ];
-
+          RUST_SRC_PATH = "${rust-bin.stable."1.67.1".default}/lib/rustlib/src/rust/library";
           shellHook = ''
             alias ls=exa
             alias find=fd

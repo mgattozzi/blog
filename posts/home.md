@@ -9,9 +9,9 @@
 - [Oxidizing the Technical Interview][oxidize]
 - [Rust and the case for WebAssembly in 2018][rust-wasm]
 
-[edge]: /the-edge
-[weird]: /weird-expressions-and-where-to-find-them
-[orphan]: /orphan-rules
-[runtime]: /rusts-runtime
-[oxidize]: /oxidizing-the-technical-interview
-[rust-wasm]: /rust-wasm
+[edge]: /posts/the-edge
+[weird]: /posts/weird-expressions-and-where-to-find-them
+[orphan]: /posts/orphan-rules
+[runtime]: /posts/rusts-runtime
+[oxidize]: /posts/oxidizing-the-technical-interview
+[rust-wasm]: /posts/rust-wasm

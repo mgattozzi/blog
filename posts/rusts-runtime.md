@@ -2,7 +2,7 @@
 
 Rust has a runtime. No really it does! I blew past that aspect in my most recent
 post ["Oxidizing the technical
-interview"](https://blog.mgattozzi.dev/oxidizing-the-technical-interview/) when
+interview"](/posts/oxidizing-the-technical-interview/) when
 I put in the line:
 
 > The greatest trick the Devil ever played was convincing C and Rust programmers

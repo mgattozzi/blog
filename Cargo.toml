@@ -6,8 +6,11 @@ version = "0.1.0"
 
 [dependencies]
 axum = "0.6.6"
-phf = { version = "^0.11.0", features = ["macros"] }
-tokio = "1.25.0"
+color-eyre = "0.6.2"
+phf = { version = "0.11.1", features = ["macros"] }
+tokio = { version = "1.25.0", features = ["full"] }
+tracing = "0.1.37"
+tracing-subscriber = "0.3.16"
 
 [build-dependencies]
 flate2 = "^1.0.25"
