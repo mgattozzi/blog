@@ -1,0 +1,50 @@
+import Mermaid from 'components/Mermaid'
+import Code from 'components/Code'
+
+# I Rewrote My Blog (Again)
+
+I've rewritten my blog using Next.js, a React framework developed by Vercel. For many years I've been using Ghost for my blog, but it just didn't fit me right. It didn't offer a lot of the flexibility that I would want in terms of features. However, I also d
+
+I now can render mermaid diagrams in my posts like so:
+<Mermaid title="Git Graph">
+gitGraph
+  commit
+  branch feature-branch
+  commit
+  commit
+  checkout main
+  merge feature-branch
+  commit
+  commit
+</Mermaid>
+
+Where in my `mdx` files it looks like this:
+
+<Code language = "jsx" code = {`\
+<Mermaid title="Git Graph">
+gitGraph
+  commit
+  branch feature-branch
+  commit
+  commit
+  checkout main
+  merge feature-branch
+  commit
+  commit
+</Mermaid>
+`}/>
+
+I also created a `Code` component which as you can see above creates and highlights the code for me. Here is a Rust example:
+
+<Code language = "rust" code = {`\
+fn main() {
+  println!("Hello World!")
+}
+`}/>
+
+And here is a Python one:
+
+<Code language = "python" code = {`\
+def main:
+  print("Hello World!")
+`}/>
